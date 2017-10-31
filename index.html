@@ -13,7 +13,7 @@
       <div class="jumbotron">
         <h1>Movie Tickets</h1>
       </div>
-      <form>
+      <form id="movieTickets">
         <div class="form-group">
           <label for="ageSelect">Select Age</label>
           <select class="form-control" id="ageSelect">
@@ -36,12 +36,15 @@
           <label for="timeSelect">Select Movie Time</label>
           <select class="form-control" id="timeSelect">
             <option value="">Please select a time</option>
-            <option value="matinee">12:00(Manitee)</option>
-            <option value="afternoon">2:15pm</option>
-            <option value="evening">7:32pm</option>
-            <option value="lateNight">12:01am</option>
           </select>
+           <button type="submit" class="btn">Get Price</button>
       </form>
+      <div class="ticketResults">
+        <h2>Your Ticket Will Cost:</h2>
+        <ul id="results">
+
+        </ul>
+      </div>
     </div>
   </body>
 </html>
