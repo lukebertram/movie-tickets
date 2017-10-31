@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/master.css">
+    <meta charset="utf-8">
+    <title>Movie Tickets</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Movie Tickets</h1>
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="ageSelect">Select Age</label>
+          <select class="form-control" id="ageSelect">
+            <option value="">Please select your age</option>
+            <option value="child">12 and Under</option>
+            <option value="adult">13-65</option>
+            <option value="senior">65+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="movieSelect">Select A Motion Picture</label>
+          <select class="form-control" id="movieSelect">
+            <option>Please select a film picture</option>
+            <option value="cryptosquare" class="allMovies">Cryptosquare 2</option>
+            <option value="electromath" class="kidFriendly">Electromath</option>
+            <option value="chimps" class="kidFriendly">Zero-Grav Chimps</option>
+            <option value="sawdust" class="allMovies">Sawdust IV</option>
+          </select>
+        <div class="form-group">
+          <label for="timeSelect">Select Movie Time</label>
+          <select class="form-control" id="timeSelect">
+            <option value="">Please select a time</option>
+            <option value="matinee">12:00(Manitee)</option>
+            <option value="afternoon">2:15pm</option>
+            <option value="evening">7:32pm</option>
+            <option value="lateNight">12:01am</option>
+          </select>
+      </form>
+    </div>
+  </body>
+</html>
