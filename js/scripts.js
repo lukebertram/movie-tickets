@@ -12,23 +12,35 @@ Ticket.prototype.setTicketPrice = function(){
     this.price = 5;
   } else if (this.age === "senior"){
     this.price = basePrice - 3;
-  } else if (this.time === "12:00pm"){
-    this.price = 5;
   } else {
     this.price = basePrice
   }
+  //all matinee showings are $5
+  if (this.time === "12:00pm"){
+    this.price = 5;
+  }
 }
-
-function Movie(title, timesArray){
+//Constructor for Movie objects
+function Movie(title, timesArray, id){
   this.title = title;
   this.times = timesArray;
+  this.id = id;
+}
+
+//Returns a movie object that matches the submitted id
+var findMovie = function(titleId, moviesArray){
+  for (var i = 0; i < moviesArray.length; i++) {
+    if (moviesArray[i].id === titleId){
+      return moviesArray[i]
+    }
+  }
 }
 
 var movies = [];
-movies.push(new Movie("CryptoSquare", ["2:15pm", "7:32pm", "12:01am"]));
-movies.push(new Movie("Electromath", ["12:00pm", "2:15pm", "7:32pm", "12:01am"]));
-movies.push(new Movie("Chimps", ["12:00pm", "2:15pm", "7:32pm", "12:01am"]));
-movies.push(new Movie("Sawdust", ["2:15pm", "7:32pm", "12:01am"]));
+movies.push(new Movie("CryptoSquare 2", ["2:15pm", "7:32pm", "12:01am"], "crypto"));
+movies.push(new Movie("Electromath", ["12:00pm", "2:15pm", "7:32pm", "12:01am"], "electro"));
+movies.push(new Movie("Zero Grav Chimps", ["12:00pm", "2:15pm", "7:32pm", "12:01am"], "chimps"));
+movies.push(new Movie("Sawdust IV", ["2:15pm", "7:32pm", "12:01am"], "sawdust"));
 
 $(document).ready(function(){
   $("#ageSelect").change(function(){
@@ -48,7 +60,7 @@ $(document).ready(function(){
     // look through movies for this title
     for (var i = 0; i < movies.length; i++) {
       // if you find the movie with matching title
-      if (movies[i].title.toLowerCase() === movieTitle){
+      if (movies[i].id.toLowerCase() === movieTitle){
         var movietimes = movies[i].times;
         // set form times to those contained in the movie obj
         $("#timeSelect").empty();
@@ -66,10 +78,15 @@ $(document).ready(function(){
     var movieChoice = $("select#movieSelect").val();
     var timeChoice = $("select#timeSelect").val();
 
+    if (movieChoice === "empty"){
+      alert("Please Select All Fields")
+    }
     var newTicket = new Ticket(movieChoice, timeChoice , ageChoice);
+    var newMovie = findMovie(movieChoice, movies);
 
+    $("ul#results").text("");
     $("ul#results").append(
-      "<li> Movie: "+ newTicket.movie +"</li>" +
+      "<li> Movie: "+ newMovie.title +"</li>" +
       "<li> Time: "+ newTicket.time +"</li>" +
       "<li> Price: $"+ newTicket.price +".00</li>"
     );
